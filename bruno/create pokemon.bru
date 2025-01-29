@@ -1,0 +1,20 @@
+meta {
+  name: create pokemon
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{host}}:{{port}}/pokemon
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "hp": 10,
+    "name": "fire",
+    "rarety": 1,
+    "type": "FIRE"
+  }
+}

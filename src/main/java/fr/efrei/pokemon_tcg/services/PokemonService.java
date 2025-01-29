@@ -22,4 +22,9 @@ public class PokemonService {
 
         return pokemons;
     }
+
+
+    public void add(Pokemon pokemon) {
+        pokemonRepository.save(pokemon);
+    }
 }
