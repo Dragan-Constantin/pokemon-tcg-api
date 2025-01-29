@@ -1,0 +1,15 @@
+meta {
+  name: draw pokemon
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://{{host}}:{{port}}/iventory/draw
+  body: json
+  auth: none
+}
+
+body:json {
+  {}
+}

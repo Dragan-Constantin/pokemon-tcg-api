@@ -1,6 +1,9 @@
 package fr.efrei.pokemon_tcg.services;
 
 import org.springframework.data.domain.Page;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +18,7 @@ public class PokemonService {
     @Autowired
     private PokemonRepository pokemonRepository;
 
-    public Page<Pokemon> getAll(int page) {
+    public Page<Pokemon> getPage(int page) {
         Pageable pageable = PageRequest.of(page, 10);
 
         Page<Pokemon> pokemons = pokemonRepository.findAll(pageable);
@@ -23,8 +26,12 @@ public class PokemonService {
         return pokemons;
     }
 
-
     public void add(Pokemon pokemon) {
         pokemonRepository.save(pokemon);
+    }
+
+
+    public List<Pokemon> getAll() {
+        return pokemonRepository.findAll();
     }
 }

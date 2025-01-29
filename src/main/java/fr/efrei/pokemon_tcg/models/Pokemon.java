@@ -13,8 +13,8 @@ import jakarta.persistence.Id;
 public class Pokemon {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private String uuid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
 
     @Column(nullable = false)
@@ -23,26 +23,22 @@ public class Pokemon {
     @Column(nullable = false)
     private int hp;
 
-    @Column(nullable = false)
-    private int rarety;
-
     @Enumerated(EnumType.STRING)
     private PokemonType type;
 
     public Pokemon() {
     }
 
-    public Pokemon(String uuid, String name, int hp, PokemonType type, int rarety) {
-        this.uuid = uuid;
+    public Pokemon(Long id, String name, int hp, PokemonType type) {
+        this.id = id;
         this.name = name;
         this.hp = hp;
         this.type = type;
-        this.rarety = rarety;
     }
 
 
-    public String getUuid() {
-        return uuid;
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -53,16 +49,12 @@ public class Pokemon {
         return hp;
     }
 
-    public int getRarety() {
-        return rarety;
-    }
-
     public PokemonType getType() {
         return type;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setid(Long id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -71,10 +63,6 @@ public class Pokemon {
 
     public void setHp(int hp) {
         this.hp = hp;
-    }
-
-    public void setRarety(int rarety) {
-        this.rarety = rarety;
     }
 
     public void setType(PokemonType type) {

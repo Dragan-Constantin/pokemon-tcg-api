@@ -21,7 +21,7 @@ public class PokemonsController {
 
     @GetMapping("{page}")
     public ResponseEntity<?> getPokemons(@PathVariable int page) {
-        Page<Pokemon> pokemons = pokemonService.getAll(page);
+        Page<Pokemon> pokemons = pokemonService.getPage(page);
         return new ResponseEntity<>(pokemons, HttpStatus.FOUND);
     }
 }

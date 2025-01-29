@@ -7,15 +7,21 @@ public class PokemonDto {
     
     private String name;
     private int hp;
-    private int rarety;
     private PokemonType type;
 
+    public PokemonDto(Pokemon pokemon) {
+        this.name = pokemon.getName();
+        this.hp = pokemon.getHp();
+        this.type = pokemon.getType();
+    }
 
-    public PokemonDto(String name, int hp, PokemonType type, int rarety) {
+    public PokemonDto() {
+    }
+
+    public PokemonDto(String name, int hp, PokemonType type) {
         this.name = name;
         this.hp = hp;
         this.type = type;
-        this.rarety = rarety;
     }
 
     public int getHp() {
@@ -26,9 +32,6 @@ public class PokemonDto {
         return name;
     }
 
-    public int getRarety() {
-        return rarety;
-    }
 
     public PokemonType getType() {
         return type;
@@ -39,7 +42,6 @@ public class PokemonDto {
         pokemon.setName(name);
         pokemon.setHp(hp);
         pokemon.setType(type);
-        pokemon.setRarety(rarety);
 
         return pokemon;
     }
