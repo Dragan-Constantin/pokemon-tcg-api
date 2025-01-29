@@ -5,9 +5,9 @@
 
 ### Run the application
 ```bash
-gradle runBoot
+gradle bootRun
 ```
 In Windows, you can run the application using the `gradlew.bat` script:
 ```bash
-gradlew.bat runBoot
+.\gradlew.bat bootRun
 ```
