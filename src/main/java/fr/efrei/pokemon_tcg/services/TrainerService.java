@@ -3,7 +3,7 @@ package fr.efrei.pokemon_tcg.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.efrei.pokemon_tcg.Dto.TrainerDto;
+import fr.efrei.pokemon_tcg.Dto.TrainerNameDto;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.repositories.TrainerRepository;
 
@@ -23,10 +23,8 @@ public class TrainerService {
         return trainerRepository.findByUuid(uuid);
     }
 
-
-
-    public Trainer add(TrainerDto trainerDto) {
-        final Trainer trainer = new Trainer(trainerDto.getName());
+    public Trainer add(TrainerNameDto trainerNameDto) {
+        final Trainer trainer = new Trainer(trainerNameDto.getName());
         inventoryService.add(trainer.getInventory());
         deckService.add(trainer.getDeck());
 

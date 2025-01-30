@@ -23,6 +23,10 @@ public class Trainer {
     @OneToOne
     private Deck deck;
 
+
+    public Trainer() {
+    }
+
     public Trainer(String name) {
         this.name = name;
         this.inventory = new Inventory();
