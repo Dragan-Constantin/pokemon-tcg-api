@@ -1,4 +1,4 @@
-package fr.efrei.pokemon_tcg.Dto;
+package fr.efrei.pokemon_tcg.dto.trainer;
 
 public class TrainerNameDto {
 

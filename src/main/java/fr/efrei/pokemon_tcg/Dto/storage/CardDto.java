@@ -1,5 +1,6 @@
-package fr.efrei.pokemon_tcg.Dto;
+package fr.efrei.pokemon_tcg.dto.storage;
 
+import fr.efrei.pokemon_tcg.dto.PokemonDto;
 import fr.efrei.pokemon_tcg.models.Card;
 
 public class CardDto {

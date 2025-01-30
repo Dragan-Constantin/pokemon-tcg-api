@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 
-import fr.efrei.pokemon_tcg.Dto.TrainerDto;
-import fr.efrei.pokemon_tcg.Dto.TrainerNameDto;
+import fr.efrei.pokemon_tcg.dto.trainer.TrainerDto;
+import fr.efrei.pokemon_tcg.dto.trainer.TrainerNameDto;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.services.TrainerService;
 

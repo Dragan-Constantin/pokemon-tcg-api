@@ -1,5 +1,7 @@
-package fr.efrei.pokemon_tcg.Dto;
+package fr.efrei.pokemon_tcg.dto.trainer;
 
+import fr.efrei.pokemon_tcg.dto.storage.DeckDto;
+import fr.efrei.pokemon_tcg.dto.storage.InventoryDto;
 import fr.efrei.pokemon_tcg.models.Trainer;
 
 public class TrainerDto {

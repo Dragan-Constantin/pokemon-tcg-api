@@ -1,4 +1,4 @@
-package fr.efrei.pokemon_tcg.Dto;
+package fr.efrei.pokemon_tcg.dto.storage;
 
 import java.util.List;
 import java.util.stream.Collectors;

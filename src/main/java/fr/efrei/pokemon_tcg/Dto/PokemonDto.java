@@ -1,4 +1,4 @@
-package fr.efrei.pokemon_tcg.Dto;
+package fr.efrei.pokemon_tcg.dto;
 
 import fr.efrei.pokemon_tcg.models.Pokemon;
 import fr.efrei.pokemon_tcg.models.enums.PokemonType;

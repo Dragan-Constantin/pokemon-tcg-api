@@ -3,7 +3,7 @@ package fr.efrei.pokemon_tcg.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.efrei.pokemon_tcg.Dto.TrainerNameDto;
+import fr.efrei.pokemon_tcg.dto.trainer.TrainerNameDto;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.repositories.TrainerRepository;
 
