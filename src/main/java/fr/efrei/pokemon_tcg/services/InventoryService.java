@@ -5,18 +5,17 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.efrei.pokemon_tcg.Dto.InventoryUuidDto;
 import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Inventory;
 import fr.efrei.pokemon_tcg.models.Pokemon;
 import fr.efrei.pokemon_tcg.repositories.CardRepository;
-import fr.efrei.pokemon_tcg.repositories.IventoryRepository;
+import fr.efrei.pokemon_tcg.repositories.InventoryRepository;
 
 @Service
-public class IventoryService {
+public class InventoryService {
     
     @Autowired
-    private IventoryRepository iventoryRepository;
+    private InventoryRepository inventoryRepository;
 
     @Autowired
     private PokemonService pokemonService;
@@ -24,7 +23,7 @@ public class IventoryService {
     @Autowired
     private CardRepository cardRepository;
 
-    public Card drawCard(InventoryUuidDto inventoryUuidDto) {
+    public Card drawCard(Inventory inventory) {
         List<Pokemon> pokemons = pokemonService.getAll();
 
         int size = pokemons.size();
@@ -54,19 +53,25 @@ public class IventoryService {
 
         cardRepository.save(card);
 
-        Inventory inventory = iventoryRepository.findByUuid(inventoryUuidDto.getUuid());
+        //Inventory inventory = inventoryRepository.findByUuid(inventoryUuidDto.getUuid());
         if (inventory == null) {
             inventory = new Inventory();
+            inventoryRepository.save(inventory);
         }
 
         inventory.addCard(card);
-        iventoryRepository.save(inventory);
+        inventoryRepository.save(inventory);
 
         return card;
     }
 
 
     public Inventory getByUuid(String uuid) {
-        return iventoryRepository.findByUuid(uuid);
+        return inventoryRepository.findByUuid(uuid);
+    }
+
+
+    public void add(Inventory inventory) {
+        inventoryRepository.save(inventory);
     }
 }

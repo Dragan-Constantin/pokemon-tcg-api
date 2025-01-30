@@ -26,6 +26,7 @@ public class Trainer {
     public Trainer(String name) {
         this.name = name;
         this.inventory = new Inventory();
+        this.deck = new Deck();
     }
 
     public Trainer(String name, Inventory inventory) {
@@ -43,6 +44,10 @@ public class Trainer {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    public Deck getDeck() {
+        return deck;
     }
 
     public void setInventory(Inventory inventory) {

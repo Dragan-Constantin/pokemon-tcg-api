@@ -3,13 +3,13 @@ package fr.efrei.pokemon_tcg.Dto;
 import java.util.List;
 
 
-public class IventoryDto {
+public class InventoryDto {
     private List<String> cards;
 
-    public IventoryDto() {
+    public InventoryDto() {
     }
 
-    public IventoryDto(List<String> cards) {
+    public InventoryDto(List<String> cards) {
         this.cards = cards;
     }
 

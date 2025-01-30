@@ -1,0 +1,17 @@
+meta {
+  name: create trainer
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://{{host}}:{{port}}/trainer
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "baaaah"
+  }
+}
