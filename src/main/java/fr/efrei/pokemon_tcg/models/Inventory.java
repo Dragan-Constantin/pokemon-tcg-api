@@ -55,4 +55,9 @@ public class Inventory {
         return null;
     }
 
+
+    public void removeCard(Card card) {
+        cards.remove(card);
+    }
+
 }

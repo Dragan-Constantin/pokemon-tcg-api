@@ -4,7 +4,9 @@ import fr.efrei.pokemon_tcg.dto.PokemonDto;
 import fr.efrei.pokemon_tcg.models.Card;
 
 public class CardDto {
+    
 
+    private String uuid;
     private int rarety;
     private PokemonDto pokemon;
 
@@ -14,9 +16,11 @@ public class CardDto {
     public CardDto(Card card) {
         this.rarety = card.getRarety();
         this.pokemon = new PokemonDto(card.getPokemon());
+        this.uuid = card.getUuid();
     }
 
-    public CardDto(int rarety, PokemonDto pokemon) {
+    public CardDto(int rarety, String uuid, PokemonDto pokemon) {
+        this.uuid = uuid;
         this.rarety = rarety;
         this.pokemon = pokemon;
     }
@@ -27,6 +31,10 @@ public class CardDto {
 
     public PokemonDto getPokemon() {
         return pokemon;
+    }
+
+    public String getUuid() {
+        return uuid;
     }
     
 }

@@ -60,7 +60,6 @@ public class InventoryService {
             cards.add(card);
         }
 
-        //Inventory inventory = inventoryRepository.findByUuid(inventoryUuidDto.getUuid());
         if (inventory == null) {
             inventory = new Inventory();
             inventoryRepository.save(inventory);
@@ -81,5 +80,14 @@ public class InventoryService {
 
     public void add(Inventory inventory) {
         inventoryRepository.save(inventory);
+    }
+
+
+    public void transfert(Inventory from, Inventory to, Card card) {
+        from.removeCard(card);
+        to.addCard(card);
+
+        inventoryRepository.save(from);
+        inventoryRepository.save(to);
     }
 }

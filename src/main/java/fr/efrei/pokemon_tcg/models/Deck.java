@@ -55,4 +55,8 @@ public class Deck {
         cards.set(slot, card);
     }
 
+
+    public void removeCard(Card card) {
+        cards.remove(card);
+    }
 }
