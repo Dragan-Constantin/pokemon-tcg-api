@@ -2,13 +2,13 @@ package fr.efrei.pokemon_tcg.Dto;
 
 public class TrainerUuidDto {
     
-    private String trainerUuid;
+    private String trainer;
 
-    public String getTrainerUuid() {
-        return trainerUuid;
+    public String getTrainer() {
+        return trainer;
     }
 
-    public void setTrainerUuid(String trainerUuid) {
-        this.trainerUuid = trainerUuid;
+    public void setTrainer(String trainer) {
+        this.trainer = trainer;
     }
 }

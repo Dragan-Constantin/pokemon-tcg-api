@@ -1,11 +1,13 @@
 package fr.efrei.pokemon_tcg.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.efrei.pokemon_tcg.models.Card;
+import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Inventory;
 import fr.efrei.pokemon_tcg.models.Pokemon;
 import fr.efrei.pokemon_tcg.repositories.CardRepository;
@@ -23,35 +25,41 @@ public class InventoryService {
     @Autowired
     private CardRepository cardRepository;
 
-    public Card drawCard(Inventory inventory) {
+    public Deck drawCard(Inventory inventory) {
         List<Pokemon> pokemons = pokemonService.getAll();
 
         int size = pokemons.size();
-        int random = (int) (Math.random() * size);
-
-        final Pokemon pokemon = pokemons.get(random);
-
-        // i want a random (1: 40%, 2: 30%, 3:15%, 4:10%, 5:5%) rarety
-        random = (int) (Math.random() * 100) + 1;
         
 
-        int rarety = random;
-        if (random <= 40) {
-            rarety = 1;
-        } else if (rarety <= 70) {
-            rarety = 2;
-        } else if (rarety <= 85) {
-            rarety = 3;
-        } else if (rarety <= 95) {
-            rarety = 4;
-        } else {
-            rarety = 5;
+        List<Card> cards = new ArrayList<>();
+        
+        for (int i = 0; i < 5; i++) {
+            int random = (int) (Math.random() * size);
+
+            final Pokemon pokemon = pokemons.get(random);
+
+            // i want a random (1: 40%, 2: 30%, 3:15%, 4:10%, 5:5%) rarety
+            random = (int) (Math.random() * 100) + 1;
+            
+
+            int rarety = random;
+            if (random <= 40) {
+                rarety = 1;
+            } else if (rarety <= 70) {
+                rarety = 2;
+            } else if (rarety <= 85) {
+                rarety = 3;
+            } else if (rarety <= 95) {
+                rarety = 4;
+            } else {
+                rarety = 5;
+            }
+
+
+            final Card card = new Card(rarety, pokemon);
+            cardRepository.save(card);
+            cards.add(card);
         }
-
-
-        final Card card = new Card(rarety, pokemon);
-
-        cardRepository.save(card);
 
         //Inventory inventory = inventoryRepository.findByUuid(inventoryUuidDto.getUuid());
         if (inventory == null) {
@@ -59,10 +67,12 @@ public class InventoryService {
             inventoryRepository.save(inventory);
         }
 
-        inventory.addCard(card);
+        inventory.setCards(cards);
         inventoryRepository.save(inventory);
 
-        return card;
+        final Deck deck = new Deck(cards);
+
+        return deck;
     }
 
 
