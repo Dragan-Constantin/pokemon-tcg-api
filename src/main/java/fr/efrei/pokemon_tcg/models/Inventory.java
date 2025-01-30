@@ -45,4 +45,14 @@ public class Inventory {
         cards.add(card);
     }
 
+
+    public Card findCard(String uuid) {
+        for (Card card : cards) {
+            if (card.getUuid().equals(uuid)) {
+                return card;
+            }
+        }
+        return null;
+    }
+
 }

@@ -1,0 +1,19 @@
+meta {
+  name: get deck
+  type: http
+  seq: 9
+}
+
+put {
+  url: http://{{host}}:{{port}}/deck
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "slot": 1,
+    "uuid": "ad69411b-925e-47a5-9602-0d34c5d6eb7c",
+    "card": "0182d4ec-fdde-4e66-adfa-90e2ea7c4a32"
+  }
+}

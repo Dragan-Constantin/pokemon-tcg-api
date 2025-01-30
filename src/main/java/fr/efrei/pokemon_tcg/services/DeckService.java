@@ -14,8 +14,7 @@ public class DeckService {
     private DeckRepository deckRepository;
 
 
-    public void add(Deck deck) {
+    public void save(Deck deck) {
         deckRepository.save(deck);
     }
-    
 }

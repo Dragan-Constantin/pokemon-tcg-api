@@ -1,32 +1,30 @@
 package fr.efrei.pokemon_tcg.dto.storage;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
+import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Inventory;
 
 
 public class InventoryDto {
-    private List<CardDto> cards;
+    private List<Card> cards;
 
     public InventoryDto() {
     }
 
     public InventoryDto(Inventory inventory) {
-        this.cards = inventory.getCards().stream()
-            .map(card -> new CardDto(card))
-            .collect(Collectors.toList());
+        this.cards = inventory.getCards();
     }
 
-    public InventoryDto(List<CardDto> cards) {
+    public InventoryDto(List<Card> cards) {
         this.cards = cards;
     }
 
-    public List<CardDto> getCards() {
+    public List<Card> getCards() {
         return cards;
     }
 
-    public void setCards(List<CardDto> cards) {
+    public void setCards(List<Card> cards) {
         this.cards = cards;
     }
 }

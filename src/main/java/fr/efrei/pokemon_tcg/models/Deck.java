@@ -35,4 +35,24 @@ public class Deck {
         this.cards = cards;
     }
 
+    public void setSlot(int slot, Card card) {
+        // card allready in deck
+        for (Card c : cards) {
+            if (c.getUuid().equals(card.getUuid())) {
+                return;
+            }
+        }
+
+        if (slot < 0 || slot > 5) {
+            return;
+        }
+
+        if (slot >= cards.size()) {
+            cards.add(card);
+            return;
+        }
+
+        cards.set(slot, card);
+    }
+
 }

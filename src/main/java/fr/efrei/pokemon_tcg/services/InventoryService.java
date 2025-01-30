@@ -10,7 +10,6 @@ import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Inventory;
 import fr.efrei.pokemon_tcg.models.Pokemon;
-import fr.efrei.pokemon_tcg.repositories.CardRepository;
 import fr.efrei.pokemon_tcg.repositories.InventoryRepository;
 
 @Service
@@ -23,7 +22,7 @@ public class InventoryService {
     private PokemonService pokemonService;
 
     @Autowired
-    private CardRepository cardRepository;
+    private CardService cardService;
 
     public Deck drawCard(Inventory inventory) {
         List<Pokemon> pokemons = pokemonService.getAll();
@@ -57,7 +56,7 @@ public class InventoryService {
 
 
             final Card card = new Card(rarety, pokemon);
-            cardRepository.save(card);
+            cardService.save(card);
             cards.add(card);
         }
 
@@ -74,12 +73,11 @@ public class InventoryService {
 
         return deck;
     }
-
-
+    
+    
     public Inventory getByUuid(String uuid) {
         return inventoryRepository.findByUuid(uuid);
     }
-
 
     public void add(Inventory inventory) {
         inventoryRepository.save(inventory);

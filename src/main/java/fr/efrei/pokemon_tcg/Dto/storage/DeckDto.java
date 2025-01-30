@@ -1,13 +1,14 @@
 package fr.efrei.pokemon_tcg.dto.storage;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Deck;
 
 public class DeckDto {
 
-    public List<CardDto> cards;
+    private List<SlotDto> cards;
 
 
     public DeckDto() {
@@ -15,12 +16,20 @@ public class DeckDto {
 
 
     public DeckDto(Deck deck) {
-        this.cards = deck.getCards().stream()
-            .map(card -> new CardDto(card))
-            .collect(Collectors.toList());
+        this.cards = new ArrayList<>();
+
+        final List<Card> cards = deck.getCards();
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            CardDto cardDto = new CardDto(card);
+            this.cards.add(new SlotDto(i, cardDto));
+        }
     }
 
-    public List<CardDto> getCards() {
+
+
+    public List<SlotDto> getCards() {
         return cards;
     }
+    
 }

@@ -26,7 +26,7 @@ public class TrainerService {
     public Trainer add(TrainerNameDto trainerNameDto) {
         final Trainer trainer = new Trainer(trainerNameDto.getName());
         inventoryService.add(trainer.getInventory());
-        deckService.add(trainer.getDeck());
+        deckService.save(trainer.getDeck());
 
 
         trainerRepository.save(trainer);
