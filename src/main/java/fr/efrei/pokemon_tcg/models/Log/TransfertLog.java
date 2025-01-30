@@ -1,19 +1,21 @@
-package fr.efrei.pokemon_tcg.models.Log;
+package fr.efrei.pokemon_tcg.models.log;
 
-import java.sql.Date;
 
+import java.util.Date;
+
+import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 
 @Entity
-public class TansfertLog implements Log {
+public class TransfertLog implements Log {
 
 
     @Id
@@ -24,21 +26,33 @@ public class TansfertLog implements Log {
     @Column(nullable = false)
     private Date date;
 
-    @OneToMany
+
+    @OneToOne
+    private Card card;
+
+    @OneToOne
     private Trainer sender;
 
-    @OneToMany
+    @OneToOne
     private Trainer receiver;
 
 
-    public TansfertLog() {
+    public TransfertLog(Trainer sender, Trainer receiver, Card card) {
         this.date = new Date(System.currentTimeMillis());
+        this.sender = sender;
+        this.receiver = receiver;
+        this.card = card;
     }
 
-    public TansfertLog(String uuid,Date date, Trainer sender, Trainer receiver) {
+    public TransfertLog() {
+    }
+
+    public TransfertLog(String uuid,Card card, Date date, Trainer sender, Trainer receiver) {
+        this.uuid = uuid;
         this.date = date;
         this.sender = sender;
         this.receiver = receiver;
+        this.card = card;
     }
 
 
@@ -56,6 +70,10 @@ public class TansfertLog implements Log {
 
     public Trainer getReceiver() {
         return receiver;
+    }
+
+    public Card getCard() {
+        return card;
     }
 
     

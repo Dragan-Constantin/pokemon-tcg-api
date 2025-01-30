@@ -1,6 +1,6 @@
-package fr.efrei.pokemon_tcg.models.Log;
+package fr.efrei.pokemon_tcg.models.log;
 
-import java.sql.Date;
+import java.util.Date;
 
 public interface Log {
 

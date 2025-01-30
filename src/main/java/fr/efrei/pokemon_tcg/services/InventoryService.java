@@ -10,6 +10,8 @@ import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Inventory;
 import fr.efrei.pokemon_tcg.models.Pokemon;
+import fr.efrei.pokemon_tcg.models.Trainer;
+import fr.efrei.pokemon_tcg.models.log.TransfertLog;
 import fr.efrei.pokemon_tcg.repositories.InventoryRepository;
 
 @Service
@@ -22,7 +24,13 @@ public class InventoryService {
     private PokemonService pokemonService;
 
     @Autowired
+    private DeckService deckService;
+
+    @Autowired
     private CardService cardService;
+
+    @Autowired
+    private TransfertLogService transfertLogService;
 
     public Deck drawCard(Inventory inventory) {
         List<Pokemon> pokemons = pokemonService.getAll();
@@ -83,11 +91,24 @@ public class InventoryService {
     }
 
 
-    public void transfert(Inventory from, Inventory to, Card card) {
-        from.removeCard(card);
-        to.addCard(card);
+    public void transfert(Trainer from, Trainer to, Card card) {
+        final Inventory fromInventory = from.getInventory();
 
-        inventoryRepository.save(from);
-        inventoryRepository.save(to);
+
+        final Deck deck = from.getDeck();
+        deck.removeCard(card);
+        fromInventory.removeCard(card);
+
+        final Inventory toInventory = to.getInventory();
+        toInventory.addCard(card);
+
+
+        deckService.save(deck);
+        inventoryRepository.save(fromInventory);
+        inventoryRepository.save(toInventory);
+
+
+        TransfertLog transfertLog = new TransfertLog(from, to, card);
+        transfertLogService.save(transfertLog);
     }
 }

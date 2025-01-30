@@ -49,8 +49,7 @@ public class TransfertController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        from.getDeck().removeCard(card);
-        inventoryService.transfert(inventory, to.getInventory(), card);
+        inventoryService.transfert(from, to, card);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
