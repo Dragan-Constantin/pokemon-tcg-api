@@ -1,6 +1,8 @@
 package fr.efrei.pokemon_tcg.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import fr.efrei.pokemon_tcg.dto.trainer.TrainerNameDto;
@@ -32,6 +34,13 @@ public class TrainerService {
         trainerRepository.save(trainer);
         
         return trainer;
+    }
+
+
+    public Page<Trainer> getByPage(int page) {
+        final Pageable pageable = Pageable.ofSize(10).withPage(page);
+
+        return trainerRepository.findAll(pageable);
     }
     
 }
