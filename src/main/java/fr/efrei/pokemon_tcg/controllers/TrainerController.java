@@ -24,7 +24,7 @@ public class TrainerController {
 
 
 
-    @GetMapping("{uuid}")
+    @GetMapping("/{uuid}")
     public ResponseEntity<?> get(@PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
