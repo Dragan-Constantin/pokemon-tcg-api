@@ -17,24 +17,20 @@ import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Inventory;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.services.DeckService;
-import fr.efrei.pokemon_tcg.services.InventoryService;
 import fr.efrei.pokemon_tcg.services.TrainerService;
 
 @RestController
-@RequestMapping("/deck")
+@RequestMapping("/deck/{uuid}")
 public class DeckController {
 
 
     @Autowired
     private TrainerService trainerService;
-
-    @Autowired
-    private InventoryService inventoryService;
     
     @Autowired
     private DeckService deckService;
     
-    @PutMapping("{uuid}")
+    @PutMapping
     public ResponseEntity<?> addCardToDeck(@RequestBody SelectCardDto slotDto, @PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
@@ -59,7 +55,7 @@ public class DeckController {
         return new ResponseEntity<>(deckDto, HttpStatus.OK);
     }
 
-    @GetMapping("{uuid}")
+    @GetMapping
     public ResponseEntity<?> getDeck(@PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
