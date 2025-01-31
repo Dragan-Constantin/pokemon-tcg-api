@@ -37,7 +37,7 @@ public class InventoryController {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
         if (trainer == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Trainer not found", HttpStatus.NOT_FOUND);
         }
 
         final Inventory inventory = trainer.getInventory();
@@ -51,7 +51,7 @@ public class InventoryController {
         final Trainer trainer = trainerService.getByUuid(trainerUuidDto.getTrainer());
 
         if (trainer == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Trainer not found", HttpStatus.NOT_FOUND);
         }
 
         Date now = new Date();

@@ -35,14 +35,14 @@ public class DeckController {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
         if (trainer == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Trainer not found", HttpStatus.NOT_FOUND);
         }
 
         final Inventory inventory = trainer.getInventory();
         Card card = inventory.findCard(slotDto.getCard());
 
         if (card == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Card not found in inventory", HttpStatus.NOT_FOUND);
         }
 
         final Deck deck = trainer.getDeck();
@@ -60,7 +60,7 @@ public class DeckController {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
         if (trainer == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Trainer not found", HttpStatus.NOT_FOUND);
         }
         final Deck deck = trainer.getDeck();
 

@@ -19,15 +19,16 @@ public class PokemonController {
     @Autowired
     private PokemonService pokemonService;
 
-
     @PostMapping
     public ResponseEntity<?> createPokemon(@RequestBody PokemonDto pokemonDto) {
-        Pokemon pokemon = pokemonDto.toPokemon();
+        if (pokemonDto == null) {
+            return new ResponseEntity<>("Request body is null", HttpStatus.BAD_REQUEST);
+        }
 
+        Pokemon pokemon = pokemonDto.toPokemon();
         pokemonService.add(pokemon);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
-        
     }
     
 }
