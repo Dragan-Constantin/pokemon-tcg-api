@@ -1,0 +1,9 @@
+spring.application.name=pokemon_tcg
+
+
+spring.datasource.url=jdbc:mysql://localhost:3306/pokemon?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=5c8LH4dBPbR72X
+
+
+spring.jpa.hibernate.ddl-auto=update

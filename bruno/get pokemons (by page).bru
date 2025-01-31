@@ -1,0 +1,19 @@
+meta {
+  name: get pokemons (by page)
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://{{host}}:{{port}}/pokemons/0
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "hp": 10,
+    "name": "fire",
+    "type": "FIRE"
+  }
+}

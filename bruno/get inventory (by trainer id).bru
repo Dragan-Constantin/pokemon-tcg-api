@@ -1,0 +1,19 @@
+meta {
+  name: get inventory (by trainer id)
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://{{host}}:{{port}}/inventory/{{trainer_uuid}}
+  body: none
+  auth: none
+}
+
+body:json {
+  {
+    "hp": 10,
+    "name": "fire",
+    "type": "FIRE"
+  }
+}

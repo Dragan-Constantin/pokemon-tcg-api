@@ -1,0 +1,18 @@
+meta {
+  name: transfert
+  type: http
+  seq: 10
+}
+
+post {
+  url: http://{{host}}:{{port}}/transfert/{{trainer_uuid}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "to": "{{trainer2_uuid}}",
+    "card": "{{card_uuid}}"
+  }
+}

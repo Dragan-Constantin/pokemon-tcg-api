@@ -1,0 +1,17 @@
+meta {
+  name: draw pokemon
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://{{host}}:{{port}}/inventory/draw
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "trainer": "91a9de4e-e35d-4696-b40c-9a5d0d6e3e5a"
+  }
+}

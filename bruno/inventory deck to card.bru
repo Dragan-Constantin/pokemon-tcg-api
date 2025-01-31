@@ -1,0 +1,17 @@
+meta {
+  name: inventory deck to card
+  type: http
+  seq: 14
+}
+
+put {
+  url: http://{{host}}:{{port}}/deck/{{trainer_uuid}}/from
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "slot": 1
+  }
+}

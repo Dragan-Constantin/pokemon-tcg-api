@@ -1,0 +1,23 @@
+meta {
+  name: create pokemon
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{host}}:{{port}}/pokemon
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "hp": 10,
+    "name": "baaaah",
+    "type": "WATER",
+    "attackUuids": [
+      "32612d1a-6d49-46c5-8497-1df641f773af"
+    ]
+  }  
+
+}
