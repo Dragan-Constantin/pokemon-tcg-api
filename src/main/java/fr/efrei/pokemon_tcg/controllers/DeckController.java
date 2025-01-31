@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.efrei.pokemon_tcg.dto.storage.DeckDto;
 import fr.efrei.pokemon_tcg.dto.storage.SelectCardDto;
+import fr.efrei.pokemon_tcg.dto.storage.SelectSlotDto;
 import fr.efrei.pokemon_tcg.models.Card;
 import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Inventory;
@@ -57,7 +58,7 @@ public class DeckController {
 
 
     @PutMapping("/from")
-    public ResponseEntity<?> removeCardFromDeck(@RequestBody SelectCardDto slotDto, @PathVariable String uuid) {
+    public ResponseEntity<?> removeCardFromDeck(@RequestBody SelectSlotDto slotDto, @PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
         if (trainer == null) {
