@@ -13,8 +13,7 @@ import fr.efrei.pokemon_tcg.dto.TransfertLogDto;
 import fr.efrei.pokemon_tcg.models.log.TransfertLog;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.RequestEntity;
+
 import org.springframework.http.ResponseEntity;
 
 @RestController

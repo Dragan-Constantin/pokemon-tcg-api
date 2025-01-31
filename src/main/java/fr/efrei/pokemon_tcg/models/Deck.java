@@ -59,4 +59,13 @@ public class Deck {
     public void removeCard(Card card) {
         cards.remove(card);
     }
+
+
+    public Card getCard(int slot) {
+        if (slot < 0 || slot >= cards.size()) {
+            return null;
+        }
+
+        return cards.get(slot);
+    }
 }
