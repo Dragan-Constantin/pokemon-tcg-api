@@ -41,13 +41,4 @@ public class PokemonDto {
     public String[] getAttackUuids() {
         return attackUuids;
     }
-
-    public Pokemon toPokemon() {
-        Pokemon pokemon = new Pokemon();
-        pokemon.setName(name);
-        pokemon.setHp(hp);
-        pokemon.setType(type);
-
-        return pokemon;
-    }
 }

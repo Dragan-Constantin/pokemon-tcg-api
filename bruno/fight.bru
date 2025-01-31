@@ -1,0 +1,18 @@
+meta {
+  name: fight
+  type: http
+  seq: 16
+}
+
+post {
+  url: http://{{host}}:{{port}}/transfert/{{trainer_uuid}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "to": "{{trainer2_uuid}}",
+    "attack": 0
+  }
+}

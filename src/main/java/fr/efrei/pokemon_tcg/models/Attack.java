@@ -20,6 +20,9 @@ public class Attack {
     @Column(nullable = false)
     private int damage;
 
+    public Attack() {
+    }
+
     public Attack(String uuid, String name, int damage) {
         this.uuid = uuid;
         this.name = name;

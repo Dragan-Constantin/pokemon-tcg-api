@@ -3,6 +3,7 @@ package fr.efrei.pokemon_tcg.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.efrei.pokemon_tcg.dto.PokemonDto;
 import fr.efrei.pokemon_tcg.models.enums.PokemonType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,6 +47,14 @@ public class Pokemon {
     }
 
 
+    public Pokemon(PokemonDto pokemonDto, List<Attack> attacks) {
+        this.name = pokemonDto.getName();
+        this.hp = pokemonDto.getHp();
+        this.type = pokemonDto.getType();
+        this.attacks = attacks;
+    }
+
+
     public Long getId() {
         return id;
     }
@@ -84,6 +93,10 @@ public class Pokemon {
 
     public void setAttacks(List<Attack> attacks) {
         this.attacks = attacks;
+    }
+
+    public Attack getAttack(int index) {
+        return attacks.get(index);
     }
 
 }

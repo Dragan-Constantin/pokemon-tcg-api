@@ -7,4 +7,7 @@ import fr.efrei.pokemon_tcg.models.Attack;
 
 @Repository
 public interface AttackRepository extends JpaRepository<Attack, String> {
+
+
+    Attack findByUuid(String uuid);
 }
