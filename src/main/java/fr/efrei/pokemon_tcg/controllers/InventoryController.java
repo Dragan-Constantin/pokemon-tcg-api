@@ -19,6 +19,8 @@ import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.services.InventoryService;
 import fr.efrei.pokemon_tcg.services.TrainerService;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/inventory")
 public class InventoryController {
@@ -52,9 +54,19 @@ public class InventoryController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
+        Date now = new Date();
+        Date lastDraw = trainer.getLastDraw();
+
+        if (lastDraw != null && now.getTime() - lastDraw.getTime() < 24 * 60 * 60 * 1000) {
+            return new ResponseEntity<>("You can only draw once a day", HttpStatus.FORBIDDEN);
+        }
+
         final Inventory inventory = trainer.getInventory();
 
         final Deck deck = inventoryService.drawCard(inventory);
+
+        trainer.setLastDraw(now);
+        trainerService.save(trainer);
 
         final DeckDto deckDto = new DeckDto(deck);
         return new ResponseEntity<>(deckDto, HttpStatus.OK);

@@ -34,4 +34,7 @@ public class TrainerService {
         return trainer;
     }
     
+    public void save(Trainer trainer) {
+        trainerRepository.save(trainer);
+    }
 }
