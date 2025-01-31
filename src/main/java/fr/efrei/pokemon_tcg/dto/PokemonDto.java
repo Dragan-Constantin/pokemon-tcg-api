@@ -8,6 +8,7 @@ public class PokemonDto {
     private String name;
     private int hp;
     private PokemonType type;
+    private String[] attackUuids;
 
     public PokemonDto(Pokemon pokemon) {
         this.name = pokemon.getName();
@@ -18,10 +19,11 @@ public class PokemonDto {
     public PokemonDto() {
     }
 
-    public PokemonDto(String name, int hp, PokemonType type) {
+    public PokemonDto(String name, int hp, PokemonType type, String[] attackUuids) {
         this.name = name;
         this.hp = hp;
         this.type = type;
+        this.attackUuids = attackUuids;
     }
 
     public int getHp() {
@@ -32,9 +34,12 @@ public class PokemonDto {
         return name;
     }
 
-
     public PokemonType getType() {
         return type;
+    }
+
+    public String[] getAttackUuids() {
+        return attackUuids;
     }
 
     public Pokemon toPokemon() {

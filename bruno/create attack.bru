@@ -1,0 +1,18 @@
+meta {
+  name: create attack
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://{{host}}:{{port}}/attack
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "hp": 50,
+    "name": "rm -rf /"
+  }
+}
