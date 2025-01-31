@@ -30,7 +30,7 @@ public class InventoryController {
     private TrainerService trainerService;
 
 
-    @GetMapping("{uuid}")
+    @GetMapping("/{uuid}")
     public ResponseEntity<?> getInventory(@PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 

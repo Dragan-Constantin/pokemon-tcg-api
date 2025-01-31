@@ -19,7 +19,7 @@ public class PokemonsController {
     @Autowired
     private PokemonService pokemonService;
 
-    @GetMapping("{page}")
+    @GetMapping("/{page}")
     public ResponseEntity<?> getPokemons(@PathVariable int page) {
         Page<Pokemon> pokemons = pokemonService.getPage(page);
         return new ResponseEntity<>(pokemons, HttpStatus.FOUND);
