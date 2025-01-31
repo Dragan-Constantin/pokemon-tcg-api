@@ -29,6 +29,10 @@ public class PokemonController {
 
     @PostMapping
     public ResponseEntity<?> createPokemon(@RequestBody PokemonDto pokemonDto) {
+        if (pokemonDto == null) {
+            return new ResponseEntity<>("Request body is null", HttpStatus.BAD_REQUEST);
+        }
+
         if (pokemonDto.getAttackUuids().length > 2) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
@@ -47,12 +51,5 @@ public class PokemonController {
                 attacks.add(attack);
             }
         }
-
-        Pokemon pokemon = new Pokemon(pokemonDto, attacks);
-        pokemonService.add(pokemon);
-
-        return new ResponseEntity<>(HttpStatus.CREATED);
-        
-    }
     
 }

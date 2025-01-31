@@ -1,6 +1,8 @@
 package fr.efrei.pokemon_tcg.controllers;
 
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +27,14 @@ public class LogController {
 
     @GetMapping("/transfert")
     public ResponseEntity<?> transfertLog(@RequestParam(name = "page") int page) {
+        if (page < 0) {
+            return new ResponseEntity<>("Page number cannot be negative.", HttpStatus.BAD_REQUEST);
+        }
         final Page<TransfertLog> transfertLogs = transfertLogService.getByPage(page);
+
+        if (transfertLogs.isEmpty()) {
+            return new ResponseEntity<>("No logs found for the given page.", HttpStatus.NOT_FOUND);
+        }
 
         final Page<TransfertLogDto> transfertLogDtos = transfertLogs.map(log -> new TransfertLogDto(log));
 
@@ -37,7 +46,14 @@ public class LogController {
 
     @GetMapping("/transfert/{uuid}")
     public ResponseEntity<?> transfertLog(@RequestParam(name = "page") int page, @PathVariable String uuid) {
+        if (page < 0) {
+            return new ResponseEntity<>("Page number cannot be negative", HttpStatus.BAD_REQUEST);
+        }
         final Page<TransfertLog> transfertLogs = transfertLogService.getByPage(page);
+
+        if (transfertLogs.isEmpty()) {
+            return new ResponseEntity<>("No logs found for the given UUID", HttpStatus.NOT_FOUND);
+        }
 
         final Page<TransfertLogDto> transfertLogDtos = transfertLogs.map(log -> new TransfertLogDto(log));
 

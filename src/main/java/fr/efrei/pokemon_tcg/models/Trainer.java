@@ -7,6 +7,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
+import java.util.Date;
+
 @Entity
 public class Trainer {
     
@@ -16,6 +18,9 @@ public class Trainer {
     
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = true)
+    private Date lastDraw;
 
     @OneToOne
     private Inventory inventory;
@@ -54,12 +59,20 @@ public class Trainer {
         return deck;
     }
 
+    public Date getLastDraw() {
+        return lastDraw;
+    }
+
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setLastDraw(Date lastDraw) {
+        this.lastDraw = lastDraw;
     }
 
 }

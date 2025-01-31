@@ -20,8 +20,19 @@ public class PokemonsController {
     private PokemonService pokemonService;
 
     @GetMapping("/{page}")
-    public ResponseEntity<?> getPokemons(@PathVariable int page) {
-        Page<Pokemon> pokemons = pokemonService.getPage(page);
-        return new ResponseEntity<>(pokemons, HttpStatus.FOUND);
+    public ResponseEntity<?> getPokemons(@PathVariable String page) {
+        try {
+            int pageNumber = Integer.parseInt(page);
+            if (pageNumber < 0) {
+                return new ResponseEntity<>("Page parameter must be a non-negative integer", HttpStatus.BAD_REQUEST);
+            }
+            Page<Pokemon> pokemons = pokemonService.getPage(pageNumber);
+            if (pageNumber >= pokemons.getTotalPages()) {
+                return new ResponseEntity<>("Page parameter exceeds the maximum number of pages", HttpStatus.BAD_REQUEST);
+            }
+            return new ResponseEntity<>(pokemons, HttpStatus.FOUND);
+        } catch (NumberFormatException e) {
+            return new ResponseEntity<>("Page parameter must be an integer", HttpStatus.BAD_REQUEST);
+        }
     }
 }

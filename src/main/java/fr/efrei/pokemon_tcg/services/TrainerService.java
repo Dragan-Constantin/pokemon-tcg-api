@@ -43,4 +43,7 @@ public class TrainerService {
         return trainerRepository.findAll(pageable);
     }
     
+    public void save(Trainer trainer) {
+        trainerRepository.save(trainer);
+    }
 }
