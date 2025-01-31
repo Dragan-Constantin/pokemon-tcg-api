@@ -5,14 +5,14 @@ meta {
 }
 
 post {
-  url: http://{{host}}:{{port}}/transfert/0702bdb8-c425-47bf-8511-2297562af0f8
+  url: http://{{host}}:{{port}}/transfert/{{trainer_uuid}}
   body: json
   auth: none
 }
 
 body:json {
   {
-    "to": "8b3b0d11-1edf-457d-8eb6-86c1d1ca22de",
-    "card": "b8f10b77-e168-41f5-bd11-e8ec3982abf0"
+    "to": "{{trainer2_uuid}}",
+    "card": "{{card_uuid}}"
   }
 }
