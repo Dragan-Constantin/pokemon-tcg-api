@@ -30,7 +30,7 @@ public class DeckController {
     @Autowired
     private DeckService deckService;
     
-    @PutMapping
+    @PutMapping("/to")
     public ResponseEntity<?> addCardToDeck(@RequestBody SelectCardDto slotDto, @PathVariable String uuid) {
         final Trainer trainer = trainerService.getByUuid(uuid);
 
@@ -50,6 +50,26 @@ public class DeckController {
         deck.setSlot(slotDto.getSlot(), card);
         deckService.save(deck);
         
+
+        final DeckDto deckDto = new DeckDto(deck);
+        return new ResponseEntity<>(deckDto, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/from")
+    public ResponseEntity<?> removeCardFromDeck(@RequestBody SelectCardDto slotDto, @PathVariable String uuid) {
+        final Trainer trainer = trainerService.getByUuid(uuid);
+
+        if (trainer == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        final Deck deck = trainer.getDeck();
+        
+        int slot = slotDto.getSlot();
+        Card card = deck.getCard(slot);
+        deck.removeCard(card);
+        deckService.save(deck);
 
         final DeckDto deckDto = new DeckDto(deck);
         return new ResponseEntity<>(deckDto, HttpStatus.OK);
