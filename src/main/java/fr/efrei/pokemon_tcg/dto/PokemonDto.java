@@ -14,6 +14,7 @@ public class PokemonDto {
         this.name = pokemon.getName();
         this.hp = pokemon.getHp();
         this.type = pokemon.getType();
+        this.attackUuids = pokemon.getAttacks().stream().map(attack -> attack.getUuid()).toArray(String[]::new);
     }
 
     public PokemonDto() {
