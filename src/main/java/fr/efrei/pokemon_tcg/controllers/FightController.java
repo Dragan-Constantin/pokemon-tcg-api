@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.efrei.pokemon_tcg.dto.FightDto;
-import fr.efrei.pokemon_tcg.models.Card;
-import fr.efrei.pokemon_tcg.models.Deck;
 import fr.efrei.pokemon_tcg.models.Trainer;
 import fr.efrei.pokemon_tcg.services.TrainerService;
 
